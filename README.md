@@ -3,8 +3,8 @@
 Adds a simple menu action for pinning and unpinning an editor.<br>
 <br>
 
-<span align="center">
+<p align="center">
 
 ![Demonstration of the contributed button to the editor actions menu](img/image.png)
 
-</span>
+</p>
