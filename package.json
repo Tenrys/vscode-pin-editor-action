@@ -2,6 +2,9 @@
 	"name": "vscode-pin-editor-action",
 	"displayName": "Pin/Unpin Editor Menu Action",
 	"description": "Adds a simple menu action for pinning and unpinning an editor",
+  "repository": {
+    "url": "https://github.com/Tenrys/vscode-pin-editor-action"
+  },
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.104.0"
