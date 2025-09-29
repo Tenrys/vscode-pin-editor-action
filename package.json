@@ -1,0 +1,69 @@
+{
+	"name": "vscode-pin-editor-action",
+	"displayName": "Pin/Unpin Editor Menu Action",
+	"description": "Adds a simple menu action for pinning and unpinning an editor",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.104.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "workbench.action.pinEditor",
+				"title": "Pin Tab",
+        "icon": "$(pin)"
+			},
+			{
+				"command": "workbench.action.unpinEditor",
+				"title": "Unpin Tab",
+        "icon": "$(pinned)"
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "workbench.action.pinEditor",
+					"group": "navigation@1",
+          "when": "!activeEditorIsPinned"
+				},
+				{
+					"command": "workbench.action.unpinEditor",
+					"group": "navigation@1",
+          "when": "activeEditorIsPinned"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "npm run check-types && npm run lint && node esbuild.js",
+		"watch": "npm-run-all -p watch:*",
+		"watch:esbuild": "node esbuild.js --watch",
+		"watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+		"package": "npm run check-types && npm run lint && node esbuild.js --production",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "npm run compile-tests && npm run compile && npm run lint",
+		"check-types": "tsc --noEmit",
+		"lint": "eslint src",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.104.0",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "22.x",
+		"@typescript-eslint/eslint-plugin": "^8.42.0",
+		"@typescript-eslint/parser": "^8.42.0",
+		"eslint": "^9.34.0",
+		"esbuild": "^0.25.9",
+		"npm-run-all": "^4.1.5",
+		"typescript": "^5.9.2",
+		"@vscode/test-cli": "^0.0.11",
+		"@vscode/test-electron": "^2.5.2"
+	}
+}
